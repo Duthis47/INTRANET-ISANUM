@@ -1,0 +1,514 @@
+body{
+    margin: 0;
+    height:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x : hidden;
+    font-family: "Montserrat", "Raleway";
+}
+
+h1{
+    position: absolute;
+    top: 6%;
+    text-align: center;
+    color: green;
+}
+
+.screen{
+    position: relative;
+    display:flex;
+    height:98.2vh;
+    width: 100%;
+    max-width: 500px;
+    border: 4px solid black;
+    padding: 5px;
+    align-items:center;
+    justify-content:center;
+}
+
+.vertical-screen{
+    display:flex;
+    flex-direction: column;
+}
+
+.classic{
+    margin:0;
+    border: 4px solid black;
+    height:35vh ;
+    width: 85%;
+    padding: 3px;
+    color:red;
+    align-items:center;
+    justify-content:center;
+    overflow-y:auto;
+}
+
+
+a{
+    text-decoration: none;
+}
+
+video {
+    position : absolute;
+    width : 84%;
+    height : 32%;
+    top : 18.07%;
+    left : 7.88%;
+}
+video:full-screen{
+    width:100%;
+    height:100%
+}
+.navbar{
+    position: absolute;
+    border : 1px;
+    bottom: 0%;
+    left:5%;
+    width: 89.2%;
+    height: 10%;
+    background: rgba(24.01, 151.98, 13.18, 0.79);
+    border-radius: 50% 50% 0 0;
+}
+
+.rectangleL{
+    width: 12.7%;
+    height: 3.87%;
+    border: 4px solid black;
+    color: white;
+    position:absolute;
+    left:14%;
+    top:89.7%;
+}
+
+.triangle {
+    position:absolute;
+    width: 6.1%;
+    height: 2.69%;
+    top:90.8%;
+    left:19%;
+    background: transparent; /* Aucune couleur, seule la forme compte */
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%); /* Triangle isocèle */
+    background-color: black;
+    color:black;
+    transform: rotate(90deg);
+}
+
+#buttonHome {
+    position: absolute;
+    margin: 0 auto;
+    top:87.3%;
+    width:12%;
+    height:6.7%;
+}
+
+.home{
+    width:100%;
+    height:100%;
+    position:absolute;
+}
+
+.pdp{
+    width:100%;
+    height:100%;
+    position:absolute;
+    background:transparent;
+}
+
+#buttonPdp{
+    position:absolute;
+    width:12.75%;
+    height:5.8%;
+    top:89%;
+    right:15%;
+}
+
+.rep{
+    background-color:gray;
+    position:absolute;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    width:32.3%;
+    height:13.4%;
+    text-decoration:none;
+}
+
+.rep:nth-child(2n+1){
+    left:8.90%;
+}
+.rep:nth-child(2n){
+    left:57.76%;
+}
+
+.rep:nth-child(1),.rep:nth-child(2){
+    top:23.92%;
+}
+
+.rep:nth-child(3),.rep:nth-child(4){
+    top:42%;
+}
+.rep:nth-child(5),.rep:nth-child(6){
+    top:60.07%;
+}
+
+.forward{
+    position:absolute;
+    width: 9.41%;
+    height: 4.46%;
+    top:79%;
+    right:20.86%;
+    background: transparent; /* Aucune couleur, seule la forme compte */
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%); /* Triangle isocèle */
+    background-color: grey;
+    color:grey;
+    transform: rotate(90deg);
+}
+
+.backward{
+    position:absolute;
+    width: 9.41%;
+    height: 4.46%;
+    top:79%;
+    left:20.86%;
+    background: transparent; /* Aucune couleur, seule la forme compte */
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%); /* Triangle isocèle */
+    background-color: grey;
+    color:grey;
+    transform: rotate(270deg);
+}
+
+
+.vidLink{
+    position:absolute;
+    display:flex;
+    width:95%;
+    height:15%;
+    justify-content: space-between;
+    left:2%;
+}
+
+.left{
+    width: 40%;
+    height:100%;
+}
+.right{
+    width:50%;
+    height:90%;
+}
+
+.vidLink:nth-child(1){
+    top:25%;
+}
+.vidLink:nth-child(2){
+    top:42.5%;
+}
+.vidLink:nth-child(3){
+    top:60%
+}
+
+.recherche{
+    position:absolute;
+    top:14%;
+    left:10%;
+    width:80%;
+    height:4%;
+}
+
+.submit{
+    position:absolute;
+    top:20%;
+    left:10%;
+    width:20%;
+    height:3%;
+}
+
+.download{
+    position:absolute;
+    top:48%;
+    left : 70%;
+    width: 20%;
+    height: 10%;
+    background:transparent;
+}
+
+.supprimer{
+    position:absolute;
+    top:49.5%;
+    left : 43%;
+    width: 11.6%;
+    height: 6%;
+    background-image: url(./../Design/supprimer.webp);
+    background-size: cover;
+    background-position: center;
+    background-color:transparent;
+    border:none;
+    box-shadow:none;
+    outline:none;
+}
+
+.description{
+    position: absolute;
+    top:58%;
+    width : 85%;
+    height: auto;
+    max-height :25%;
+    overflow-y : auto;
+}
+
+.connexion{
+    width: 90%;
+    height:40%;
+    border: none;
+    padding : 5%;
+    font-size : 1rem;
+    font-weight: bold;
+    border-radius : 8px;
+    background-color : #CECECE;
+    color:#4CAF50;
+    display:flex;
+    justify-content : space-between;
+}
+
+.high-left {
+    position:absolute;
+    width : 45%;
+    height : auto;
+    top : 30.25%;
+    left : 0;
+    display: flex;
+    justify-content: center;
+    font-size : 200%;
+}
+
+.high-right{
+    position:absolute;
+    width: 45%;
+    height:auto;
+    top:30.25%;
+    left:50%;
+    display : flex;
+    justify-content: center;
+    font-size : 200%;
+}
+.high-center {
+    position: absolute;
+    top:40%;
+    left:-5%;
+    width:100%;
+    display: flex;
+    justify-content:center;
+    font-size:200%;
+}
+
+.submitConnex{
+    position:absolute;
+    left:2%;
+    width:88%;
+    height:4%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+
+.submitConnex input[type="submit"]{
+    color:#4CAF50;
+    height : 100%;
+    width: 30%;
+}
+
+
+.txtConnex{
+    height : 15%;
+}
+
+.buttonLink{
+    display: inline-block;
+    max-width:45%;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right:5%;
+    min-height:15%;
+    vertical-align:middle;
+}
+
+.txtFormulaire{
+    margin:0;
+    border: 4px solid black;
+    max-height:35vh ;
+    width: 85%;
+    padding: 3px;
+    color:red;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+
+.formFormulaire{
+    margin : 0 auto;
+    width: 85%;
+    text-align:left;
+}
+
+.textAreaForm{
+    margin: 0px;
+    min-width : 100%;
+    min-height : 100%;
+}
+
+.formUser{
+    width:85%;
+    height: 35vh;
+}
+
+
+.containDems{
+    width:90%;
+    height:60%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.demande{
+    width:100%;
+    height:25%;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-evenly;
+    border: solid rgba(0,0,0,0.5) 2px;
+}
+
+.contLeft{
+    width:50%;
+    height:100%;
+    text-align:left;
+}
+
+.contRight{
+    width:50%;
+    height:100%;
+    text-align:right;
+    word-break: break-word;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    overflow : hidden;
+}
+
+.contRightHaut{
+    width:100%;
+    height:50%;
+    text-align:right;
+    word-break:break-word;
+    overflow: hidden;
+}
+
+.contRightBas{
+    width:100%;
+    height:50%;
+    display : flex;
+    align-items: center;
+}
+
+.formLstDem{
+    position:absolute;
+    width:70%;
+    height: 4%;
+    top:15%;
+    left:15%;
+    display : flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.uneDemande{
+    width:100%;
+    padding:10%;
+    display:flex;
+    flex-direction:column;
+    align-content: flex-start;
+}
+
+.accepter{
+    width:100%;
+    padding:10%;
+    display:flex;
+    flex-direction:column;
+    align-content: space-between;
+}
+
+@media (max-width : 768px){
+    .connexion{
+        width: 90%;
+        height : 40%;
+        border: none;
+        padding : 5%;
+        font-size : 1rem;
+        font-weight: bold;
+        border-radius : 8px;
+        background-color : #CECECE;
+        color:#4CAF50;
+        display:flex;
+        justify-content : space-between;
+    }
+
+    .high-left {
+        position:relative;
+        width : 45%;
+        height : auto;
+        top : 0;
+        left : 0;
+        display: flex;
+        justify-content: center;
+        font-size : 150%;
+    }
+
+    .high-right{
+        position:absolute;
+        width: 45%;
+        height:auto;
+        top:30.25%;
+        left:50%;
+        display : flex;
+        justify-content: center;
+        font-size : 150%;
+    }
+    .buttonLink{
+    display: inline-block;
+    max-width:40%;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right:3%;
+    min-height:15%;
+    vertical-align:middle;
+    }
+    
+    .formLstDem{
+    position:absolute;
+    width:70%;
+    height: 4%;
+    top:18%;
+    left:15%;
+    display : flex;
+    justify-content: center;
+    flex-direction: column;
+    }
+    .textAreaForm{
+    margin: 0px;
+    min-width : 100%;
+    min-height:auto;
+    }
+    .br-pc{
+        display: none;
+    }
+}
+

@@ -1,0 +1,57 @@
+.carousel {
+  position: relative;
+  margin: 100px auto;
+  width: 90%;
+  border: 5px solid red;
+  overflow: hidden;
+}
+
+/* Animation infinie */
+.group {
+  display: flex;
+  gap: 1em;
+  animation: scroll 10s linear infinite;
+}
+
+/* Les cartes */
+.card {
+  flex: 0 0 5em;
+  height: 5em;
+  background: cornflowerblue;
+  font-size: 3rem;
+  border-radius: .2em;
+  text-align: center;
+  align-content: center;
+  color: white;
+}
+
+/* Animation continue */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.carousel::before,
+.carousel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 10%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.carousel::before {
+  left: 0;
+  background: linear-gradient(to right, rgb(255, 255, 255) 0%, transparent 100%);
+}
+
+.carousel::after {
+  right: 0;
+  background: linear-gradient(to left, rgb(255, 255, 255) 0%, transparent 100%);
+}

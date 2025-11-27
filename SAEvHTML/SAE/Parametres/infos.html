@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ISA NET - Paramètres</title>
+
+
+  <!-- Début des imports Boostraps-->
+  <link rel="stylesheet" href="./../Style/styleFooter.css" />
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/navbars-offcanvas/" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+  <script src="./../assets/js/color-modes.js"></script>
+  <script src="./../assets/dist/js/bootstrap.bundle.min.js"></script>
+  <link href="./../assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <meta name="theme-color" content="#712cf9" />
+  <link href="./../Style/navbars-offcanvas.css" rel="stylesheet" />
+  <link href="./style.css" rel="stylesheet">
+  <link rel="stylesheet" href="./styleI.css" />
+
+
+</head>
+
+<body>
+
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Offcanvas navbar">
+      <div class="container-fluid">
+
+
+        <a class="navbar-brand d-flex align-items-center" href="#">
+          <img src="./../img/logoISANET.png" alt="Logo ISA NET" class="img-fluid rounded me-2"
+            style="height:40px; object-fit:cover;">
+        </a>
+
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasNavbar"
+          aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+              aria-label="Close"></button>
+          </div>
+
+
+          <div class="offcanvas-body d-flex flex-lg-row flex-column align-items-lg-center ">
+
+            <ul class="navbar-nav text-center mb-3 mb-lg-0 mx-lg-auto align-items-lg-center">
+              <li class="nav-item px-lg-3"><a class="nav-link active" href="#">Accueil</a></li>
+              <li class="nav-item px-lg-3"><a class="nav-link" href="#">Tableau de bord</a></li>
+              <li class="nav-item px-lg-3"><a class="nav-link" href="#">Cours</a></li>
+              <li class="nav-item px-lg-3"><a class="nav-link" href="#">Forum</a></li>
+
+              <li class="nav-item dropdown px-lg-3">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">À propos</a>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                  <li><a class="dropdown-item" href="#">ISA NUM</a></li>
+                  <li><a class="dropdown-item" href="#">Règlements d'étude</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="#">SimePrime</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item px-lg-3"><a class="nav-link" href="#">Message</a></li>
+            </ul>
+
+
+            <div class="nav-item dropdown ms-lg-auto mt-2 mt-lg-0 text-center">
+              <a class="nav-link dropdown-toggle text-white" href="#" id="navbarProfil" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Username
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark text-center" aria-labelledby="navbarProfil">
+                <li><a class="dropdown-item" href="#">Mon Compte</a></li>
+                <li><a class="dropdown-item" href="#">Se Déconnecter</a></li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+
+
+  <main class="d-flex min-vh-100">
+    <div class="d-lg-none ms-3 mt-4 mb-4 position-absolute" style="z-index: 1050;">
+      <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasAside"
+        aria-controls="offcanvasAside">
+        <i class="bi bi-gear-fill"></i>
+      </button>
+    </div>
+
+    <aside class="sidebar d-none d-lg-block border-end">
+      <h5>Général</h5>
+      <div class="list-group list-group-flush">
+        <a href="#" class="list-group-item list-group-item-action active">Informations</a>
+        <a href="#" class="list-group-item list-group-item-action">Notifications</a>
+      </div>
+
+      <h5 class="mt-4">Compte</h5>
+      <div class="list-group list-group-flush">
+        <a href="#" class="list-group-item list-group-item-action">E-mail</a>
+        <a href="#" class="list-group-item list-group-item-action">Mot de passe</a>
+      </div>
+
+      <h5 class="mt-4">A suivre</h5>
+      <div class="list-group list-group-flush mb-4">
+        <a href="#" class="list-group-item list-group-item-action">...</a>
+        <a href="#" class="list-group-item list-group-item-action">...</a>
+      </div>
+    </aside>
+
+
+    <section class="settings-content d-flex flex-column justify-content-center align-items-center flex-grow-1 py-5">
+      <div class="w-75">
+        <h2 class="text-center mb-4">Paramètres du Compte</h2>
+
+        <form method="POST" action="#">
+
+          <div class="card shadow-sm border-0 rounded-4 mb-4">
+            <div class="card-body">
+              <label class="form-label fw-semibold text-secondary">Nom</label>
+              <input type="text" name="name" class="form-control" value=" Doe">
+            </div>
+          </div>
+          <div class="card shadow-sm border-0 rounded-4 mb-4">
+            <div class="card-body">
+              <label class="form-label fw-semibold text-secondary">Prenom</label>
+              <input type="text" name="name" class="form-control" value="John">
+            </div>
+          </div>
+
+          <div class="card shadow-sm border-0 rounded-4 mb-4">
+            <div class="card-body">
+              <label class="form-label fw-semibold text-secondary">Année de formation</label>
+              <select class="form-select" name="year">
+                <option>ISA NUM 1</option>
+                <option>ISA NUM 2</option>
+                <option>ISA NUM 3</option>
+                <option>ISA NUM 4</option>
+                <option>ISA NUM 5</option>
+              </select>
+            </div>
+          </div>
+
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary rounded-pill px-5 py-2 fw-semibold">
+              Enregistrer les modifications
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- mobile -->
+  <div class="offcanvas offcanvas-start" style="background-color: #2c2f33;" tabindex="-1" id="offcanvasAside"
+    aria-labelledby="offcanvasAsideLabel">
+    <div class="offcanvas-header">
+      <h5 id="offcanvasAsideLabel">Menu Paramètres</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="list-group list-group-flush">
+        <a href="#" class="list-group-item list-group-item-action">Informations</a>
+        <a href="#" class="list-group-item list-group-item-action active">Notifications</a>
+        <a href="#" class="list-group-item list-group-item-action">E-mail</a>
+        <a href="#" class="list-group-item list-group-item-action">Mot de passe</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer row py-5 my-5 border-top">
+
+    <!-- Partie gauche -->
+    <div class="col-md-6 d-flex flex-column justify-content-center text-center">
+      <h5 class="text-start w-100 ps-md-5">EN SAVOIR PLUS SUR NOUS</h5>
+
+      <ul class="nav justify-content-center flex-wrap mt-2">
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2">Fonctionnalités</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2">Tarifs</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2">FAQ</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2">À propos</a>
+        </li>
+      </ul>
+      <p class=" mt-3 mb-0">&copy; 2025 ISA NET</p>
+    </div>
+
+
+
+    <!-- Partie droite : effets 3D -->
+    <div class="col-md-6 d-flex justify-content-center align-items-center footer-section">
+      <ul>
+        <li>
+          <a href="#">
+            <i class="bi bi-instagram"></i>
+            <span>Instagram</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bi bi-linkedin"></i>
+            <span>LinkedIn</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="bi bi-browser-safari"></i>
+            <span>Site Web</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </footer>
+
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="./../assets/dist/js/bootstrap.bundle.min.js" class="astro-vvvwv3sm"></script>
+  <script src="./parametres.js"></script>
+
+
+  </main>
+  <script src="./../assets/dist/js/bootstrap.bundle.min.js" class="astro-vvvwv3sm"></script>
+</body>
+
+</html>

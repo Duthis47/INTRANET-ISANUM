@@ -1,0 +1,434 @@
+body,
+html {
+    background-color: #1b1d21;
+    overflow-x: hidden;
+    color: white;
+}
+
+nav{
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.btn-bd-primary {
+    --bd-violet-bg: #712cf9;
+    --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+    --bs-btn-font-weight: 600;
+    --bs-btn-color: var(--bs-white);
+    --bs-btn-bg: var(--bd-violet-bg);
+    --bs-btn-border-color: var(--bd-violet-bg);
+    --bs-btn-hover-color: var(--bs-white);
+    --bs-btn-hover-bg: #6528e0;
+    --bs-btn-hover-border-color: #6528e0;
+    --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+    --bs-btn-active-color: var(--bs-btn-hover-color);
+    --bs-btn-active-bg: #5a23c8;
+    --bs-btn-active-border-color: #5a23c8;
+}
+
+.alterne-couleur-text {
+    color: black;
+}
+
+/* ########################################## */
+/* ################ NavBar ################### */
+/* ########################################## */
+
+.navbar {
+    margin-bottom: 20px;
+    margin-top: 0 !important;
+}
+
+
+
+/*Tableau de bord */
+.color-bleu-system {
+    color: rgb(0, 122, 255);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.gradende-bleu {
+    background: linear-gradient(180deg, #00d6b9, #68cfd1);
+    color: white;
+}
+
+/* ########################################## */
+/* ################ Cours ################### */
+/* ########################################## */
+li small {
+    color: black;
+    font-weight: bold;
+}
+
+
+.bi {
+    vertical-align: -0.125em;
+    fill: currentColor;
+}
+
+.card-cover {
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.4s ease, background-size 0.4s ease;
+    cursor: pointer;
+}
+
+.card-cover:hover {
+    transform: scale(1.03);
+
+}
+
+/*Pour le select*/
+.title-select {
+    font-size: 1.5rem;
+    text-align: center;
+    border: none;
+    border-bottom: 3px solid #0d6efd;
+    border-radius: 0;
+    background-color: transparent;
+    box-shadow: none;
+    color: #0d6efd;
+    transition: all 0.3s ease;
+}
+
+.title-select:focus {
+    border-color: #6610f2;
+    outline: none;
+    box-shadow: 0 4px 10px rgba(13, 110, 253, 0.2);
+    color: #6610f2;
+    background-color: #fff;
+}
+
+.title-select option {
+    color: #212529;
+    background-color: #fff;
+}
+
+.text-shadow-1 {
+    text-shadow: 0 .125rem .25rem rgba(0, 0, 0, .25);
+}
+
+.text-shadow-2 {
+    text-shadow: 0 .25rem .5rem rgba(0, 0, 0, .25);
+}
+
+.text-shadow-3 {
+    text-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .25);
+}
+
+
+#btn-fixed-cours {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  padding: 12px 24px;
+  background-color: cyan;
+  color: black;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 12px; /* coins arrondis */
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+  border: 2px solid #00ffff;
+  transition: 0.3s ease;
+  z-index: 999;
+}
+
+#btn-fixed-cours:hover {
+  background-color: yellow;
+  border-color: yellow;
+  transform: translateY(-3px);
+}
+
+/* ########################################## */
+/* ################ EVENEMENTS ################### */
+/* ########################################## */
+
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+
+/* ########################################## */
+/* ################ FORUM ################### */
+/* ########################################## */
+
+.input-group-forum {
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.input-group-forum .form-control {
+    border: none;
+    box-shadow: none;
+    padding: 0.6rem 1rem;
+}
+
+.input-group-text-forum {
+    border: none;
+}
+
+
+/* ########################################## */
+/* ################ Message ################### */
+/* ########################################## */
+
+
+/* --- Barre latérale gauche --- */
+.sidebar {
+    width: 340px;
+    background-color: #2c2f33;
+    border-right: 1px solid #444;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.sidebar h5 {
+    margin: 0;
+}
+
+.sidebar .list-group-item {
+    background-color: transparent;
+    color: white;
+    border: none;
+    transition: background 0.3s;
+}
+
+.sidebar .list-group-item:hover {
+    background-color: #3c3f43;
+}
+
+.sidebar .list-group-item.active {
+    background-color: #007bff;
+    color: white;
+}
+
+/* --- Zone de chat --- */
+
+.chat-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #1e2124;
+}
+
+.chat-messages {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    margin-bottom: 12px;
+    max-width: 70%;
+    padding: 10px 15px;
+    border-radius: 15px;
+    word-wrap: break-word;
+}
+
+.message.sent {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-end;
+}
+
+.message.received {
+    background-color: #343a40;
+    color: white;
+    align-self: flex-start;
+}
+
+.chat-input {
+    border-top: 1px solid #444;
+    padding: 10px 15px;
+    display: flex;
+    gap: 10px;
+    background-color: #2c2f33;
+}
+
+.chat-input input {
+    flex: 1;
+    border-radius: 20px;
+    border: none;
+    padding: 10px 15px;
+    background-color: #1e2124;
+    color: white;
+}
+
+.chat-input input:focus {
+    outline: none;
+    background-color: #2a2d31;
+}
+
+.chat-input button {
+    border-radius: 50%;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chat-input button:hover {
+    background-color: #0069d9;
+}
+
+h5 {
+    color: white;
+}
+
+/*barre de recherche */
+.input-group {
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.input-group .form-control {
+    border: none;
+    box-shadow: none;
+    padding: 0.6rem 1rem;
+}
+
+.input-group-text {
+    border: none;
+}
+
+a p {
+    transition: color 0.2s;
+}
+
+a p:hover {
+    color: #0d6efd;
+    text-decoration: underline;
+}
+
+/*Fin barSear*/
+
+/* --- Responsive --- */
+@media (max-width: 992px) {
+    .sidebar {
+        display: none;
+    }
+}
+
+/* ########################################## */
+/* ################ FOOTER ################### */
+/* ########################################## */
+
+a p {
+    transition: color 0.2s;
+}
+
+a p:hover {
+    color: #0d6efd;
+    text-decoration: underline;
+}
+
+h2 {
+    color: white !important;
+}
+
+footer {
+    background-color: #595959 !important;
+    /* fond du footer */
+    color: white !important; 
+    position: relative;
+    overflow: hidden;
+    /* empêche les effets de sortir du footer */
+}
+
+/* Conteneur des liens stylisés */
+.footer-section {
+    position: relative;
+    perspective: 800px;
+}
+
+.footer-section ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    gap: 20px;
+}
+
+.footer-section ul li {
+    list-style: none;
+}
+
+.footer-section ul li a {
+    position: relative;
+    display: block;
+    width: 200px;
+    height: 80px;
+    background: white;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 10px;
+    text-align: left;
+    padding-left: 20px;
+    line-height: 80px;
+    transform: rotate(-25deg) skew(20deg);
+    box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s ease;
+}
+
+/* effets latéraux */
+.footer-section ul li a::before,
+.footer-section ul li a::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 100%;
+    background: #b1b1b1;
+    top: 10px;
+    left: -20px;
+    transform: skewY(-45deg);
+}
+
+/* icône et texte */
+.footer-section i {
+    font-size: 2rem;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+/* effet hover */
+.footer-section ul li a:hover {
+    transform: rotate(-25deg) skew(20deg) translateY(-10px);
+    color: white;
+}
+
+/* couleurs personnalisées au survol */
+.footer-section ul li:nth-child(1) a:hover {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888) !important;
+    /* Instagram */
+}
+
+.footer-section ul li:nth-child(2) a:hover {
+    background: #0077b5;
+    /* LinkedIn */
+}
+
+.footer-section ul li:nth-child(3) a:hover {
+    background: #4caf50;
+    /* Site Web / vert */
+}
