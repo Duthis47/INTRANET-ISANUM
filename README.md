@@ -8,5 +8,4 @@ L'usage du Lorem Ipsum est de permettre aux graphistes et designers de se concen
  Il est couramment utilisé dans les logiciels de traitement de texte, de conception graphique et de gestion de contenu, notamment dans des outils comme Microsoft Word, où des commandes comme =lorem(0) ou =rand(x,y) permettent de générer du texte factice.
  Des générateurs en ligne permettent également de créer des versions personnalisées du Lorem Ipsum, y compris des variantes humoristiques comme le "hipster ipsum" ou le "zombie ipsum".
 
-En revanche, la mention d'Eric Zemmour dans le contexte fourni concerne une critique de ses propos sur l'histoire de France pendant la Seconde Guerre mondiale, notamment sa déclaration selon laquelle "Pétain a sauvé les Juifs français", une affirmation historiquement contestée et qualifiée de négationniste par certains médias.
- Cette référence à Zemmour n'a aucun lien direct avec le texte "Lorem ipsum", qui est un outil technique utilisé dans le design et la typographie, et non un élément lié à des débats politiques ou historiques.
+J'ai mal
