@@ -1,0 +1,21 @@
+
+{
+    "contenu": "blbl",
+    "TimeSent": 1234256,
+    "SenderID": 2,
+    "ReceiverID": 3
+},
+
+
+{
+    "Salon":{
+        "Question":"dslfjsdpjfgs",
+        "QuestID":2,
+        "userID": 3
+        "Reponse"{
+            "Réponse":"babababab",
+            "userID":2,
+            "TimeSend": 1243567
+        }
+    }
+}
