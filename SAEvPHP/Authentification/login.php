@@ -1,0 +1,189 @@
+<?php
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHP.php to edit this template
+ */
+?>
+<!DOCTYPE html>
+<html lang="fr">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ISA NET - Connexion</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap">
+    </head>
+
+    <body>
+        
+        <div id="particles-js"></div>
+
+        <div class="container">
+            <div class="form-box">
+                <h2>LOGIN</h2>
+                <p>Welcome back</p>
+
+                <form action="./../Connexion/connexion.php" method="POST">
+                    <div class="input-group">
+                        <input type="email" name="identification" id="username" pattern=".+@(univ-pau\.fr|etud.univ-pau\.fr|test)" required class="input-field">
+                        <label for="username">Username</label>
+                        <div class="glow-line"></div>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="password" name="password" id="password" required class="input-field">
+                        <label for="password">Password</label>
+                        <div class="glow-line"></div>
+                    </div>
+
+                    <div class="remember-forgot">
+                        <div class="remember">
+                            <input type="checkbox" id="remember">
+                            <label for="remember">Remember me</label>
+                        </div>
+                        <a href="#" class="forgot">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="login-btn">
+                        <span>SIGN IN</span>
+                        <div class="btn-glow"></div>
+                    </button>
+                    <?php 
+                        if (isset($_GET["erreur"])){
+                            ?>
+                    <div id="erreur" class="error-message"> <?php echo $_GET["erreur"]; ?></div>
+                    <?php
+                        }
+                    ?>
+                    
+                    <div class="signup-link">
+                        Don't have an account? <a href="#">Register</a>
+                    </div>
+                    
+                </form>
+
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                particlesJS('particles-js', {
+                    "particles": {
+                        "number": {
+                            "value": 100,
+                            "density": {
+                                "enable": true,
+                                "value_area": 800
+                            }
+                        },
+                        "color": {
+                            "value": "#206db5"
+                        },
+                        "shape": {
+                            "type": "circle",
+                            "stroke": {
+                                "width": 0,
+                                "color": "#000000"
+                            },
+                            "polygon": {
+                                "nb_sides": 5
+                            }
+                        },
+                        "opacity": {
+                            "value": 0.8,
+                            "random": true,
+                            "anim": {
+                                "enable": true,
+                                "speed": 1,
+                                "opacity_min": 0.4,
+                                "sync": false
+                            }
+                        },
+                        "size": {
+                            "value": 5,
+                            "random": true,
+                            "anim": {
+                                "enable": true,
+                                "speed": 2,
+                                "size_min": 1,
+                                "sync": false
+                            }
+                        },
+                        "line_linked": {
+                            "enable": true,
+                            "distance": 150,
+                            "color": "#206db5",
+                            "opacity": 0.6,
+                            "width": 1.5
+                        },
+                        "move": {
+                            "enable": true,
+                            "speed": 2,
+                            "direction": "none",
+                            "random": true,
+                            "straight": false,
+                            "out_mode": "out",
+                            "bounce": false,
+                            "attract": {
+                                "enable": true,
+                                "rotateX": 600,
+                                "rotateY": 1200
+                            }
+                        }
+                    },
+                    "interactivity": {
+                        "detect_on": "canvas",
+                        "events": {
+                            "onhover": {
+                                "enable": true,
+                                "mode": "repulse"
+                            },
+                            "onclick": {
+                                "enable": true,
+                                "mode": "push"
+                            },
+                            "resize": true
+                        },
+                        "modes": {
+                            "grab": {
+                                "distance": 400,
+                                "line_linked": {
+                                    "opacity": 1
+                                }
+                            },
+                            "bubble": {
+                                "distance": 400,
+                                "size": 40,
+                                "duration": 2,
+                                "opacity": 8,
+                                "speed": 3
+                            },
+                            "repulse": {
+                                "distance": 100,
+                                "duration": 0.4
+                            },
+                            "push": {
+                                "particles_nb": 4
+                            },
+                            "remove": {
+                                "particles_nb": 2
+                            }
+                        }
+                    },
+                    "retina_detect": true
+                });
+            });
+        </script>
+    </body>
+
+</html>
+<?php
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHP.php to edit this template
+ */
+?>
