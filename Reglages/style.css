@@ -1,0 +1,291 @@
+/* =========================================
+   1. BOOTSTRAP TEMPLATE HELPERS
+   (Consolidé depuis styleI, styleN, styleE, styleP)
+   ========================================= */
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+
+.b-example-divider {
+    width: 100%;
+    height: 3rem;
+    background-color: #0000001a;
+    border: solid rgba(0, 0, 0, 0.15);
+    border-width: 1px 0;
+    box-shadow: inset 0 0.5em 1.5em #0000001a, inset 0 0.125em 0.5em #00000026;
+}
+
+.b-example-vr {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 100vh;
+}
+
+.bi {
+    vertical-align: -0.125em;
+    fill: currentColor;
+}
+
+.nav-scroller {
+    position: relative;
+    z-index: 2;
+    height: 2.75rem;
+    overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+    display: flex;
+    flex-wrap: nowrap;
+    padding-bottom: 1rem;
+    margin-top: -1px;
+    overflow-x: auto;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Bouton violet par défaut des templates Bootstrap (Garder si utilisé ailleurs, sinon peut être supprimé) */
+.btn-bd-primary {
+    --bd-violet-bg: #712cf9;
+    --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+    --bs-btn-font-weight: 600;
+    --bs-btn-color: var(--bs-white);
+    --bs-btn-bg: var(--bd-violet-bg);
+    --bs-btn-border-color: var(--bd-violet-bg);
+    --bs-btn-hover-color: var(--bs-white);
+    --bs-btn-hover-bg: #6528e0;
+    --bs-btn-hover-border-color: #6528e0;
+    --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+    --bs-btn-active-color: var(--bs-btn-hover-color);
+    --bs-btn-active-bg: #5a23c8;
+    --bs-btn-active-border-color: #5a23c8;
+}
+
+.bd-mode-toggle {
+    z-index: 1500;
+}
+
+.bd-mode-toggle .bi {
+    width: 1em;
+    height: 1em;
+}
+
+.bd-mode-toggle .dropdown-menu .active .bi {
+    display: block !important;
+}
+
+
+/* =========================================
+   2. LAYOUT GLOBAL & NAVIGATION
+   ========================================= */
+body {
+    color: white;
+}
+
+header {
+    margin-top: 0 !important;
+}
+
+.navbar {
+    margin-bottom: 0 !important;
+}
+
+/* Sidebar (Menu gauche) */
+.sidebar {
+    width: 300px;
+    background-color: #2c2f33;
+    border-right: 1px solid #444;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.sidebar h5 {
+    color: #fff;
+    margin: 20px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.sidebar .list-group-item {
+    background-color: transparent;
+    color: white;
+    border: none;
+    transition: background 0.3s;
+    border-radius: 0;
+    padding: 15px 20px;
+}
+
+.sidebar .list-group-item:hover {
+    background-color: #3a3d41;
+}
+
+.sidebar .list-group-item.active {
+    background-color: #007bff;
+    color: white;
+}
+
+
+/* =========================================
+   3. CONTENU DES PARAMÈTRES (Settings)
+   ========================================= */
+.settings-content {
+    flex-grow: 1;
+    background-color: #1e2124;
+    padding: 40px;
+    overflow-y: auto;
+    color: #fff;
+    min-height: 100vh;
+    /* Styles fusionnés */
+    border-radius: 16px; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 3rem 2rem;
+    margin-top: 2rem;
+}
+
+.settings-content h2 {
+    color: #0d6efd; /* Uniformisé sur le bleu (était parfois #328bff) */
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 600;
+}
+
+
+/* =========================================
+   4. COMPOSANTS (Cartes, Boutons, Textes)
+   ========================================= */
+.card {
+    transition: all 0.2s ease-in-out;
+    border-radius: 12px;
+}
+
+.card:hover {
+    background-color: #f4f8ff;
+    transform: translateY(-2px);
+}
+
+.text-style {
+    color: #9900ff;
+}
+
+/* Boutons */
+.btn-primary {
+    background-color: #0d6efd;
+    border: none;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+}
+
+.btn-style {
+    background-color: #328bff;
+    border: none;
+    color: #fff;
+}
+
+.btn-style:hover {
+    background-color: #1f6fe0;
+}
+
+
+/* =========================================
+   5. FORMULAIRES (Mode Sombre)
+   ========================================= */
+.form-label {
+    color: #fff; /* Priorité au blanc pour le mode sombre */
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+/* Inputs & Selects */
+.form-select,
+.form-control {
+    background-color: #2c2f33;
+    color: #fff;
+    border: 1px solid #ced4da; /* Bordure par défaut */
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 0.95rem;
+}
+
+.form-select:focus,
+.form-control:focus {
+    background-color: #333;
+    border-color: #0d6efd;
+    color: #fff !important;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+}
+
+.form-check-input:checked {
+    background-color: #71b9fc;
+    border-color: #71b9fc;
+}
+
+
+/* =========================================
+   6. TOGGLE SWITCH (Style iOS)
+   ========================================= */
+.ios-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 30px;
+}
+
+.ios-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.ios-slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background-color: #888;
+    transition: background-color 0.4s, box-shadow 0.4s;
+    border-radius: 34px;
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+.ios-slider::before {
+    content: "";
+    position: absolute;
+    height: 24px;
+    width: 24px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.ios-switch input:checked + .ios-slider {
+    background: linear-gradient(145deg, #007bff, #3399ff);
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.6);
+}
+
+.ios-switch input:checked + .ios-slider::before {
+    transform: translateX(20px);
+}
+
+.ios-slider:active::before {
+    width: 28px;
+}
+
+.ios-switch input:focus + .ios-slider {
+    box-shadow: 0 0 1px #007bff;
+}
