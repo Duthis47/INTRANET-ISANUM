@@ -1,10 +1,12 @@
 <?php 
-require '../Connexion/laConnexion.php';    
+session_start();
+require './../Connexion/laConnexion.php';    
 
-$ordreSQL = "SELECT * FROM Matiere";
+$ordreSQL = "SELECT * FROM Theme";
 $RequeteP = $pdo->prepare($ordreSQL);
 $RequeteP->execute();
-$lesMatieres = $RequeteP->fetchAll()
+$lesThemes = $RequeteP->fetchAll();
+
 ?>
 
 
@@ -26,7 +28,7 @@ $lesMatieres = $RequeteP->fetchAll()
   <link href="./../Style/Bootstrap/assets/dist/css/bootstrap.min.css" rel="stylesheet" />
 
   <link href="./../Style/css/style.css" rel="stylesheet" />
-
+ <link href="./../Style/css/events.css" rel="stylesheet" />
   <!--Fin import Nav Bar-->
 
 
@@ -39,6 +41,18 @@ $lesMatieres = $RequeteP->fetchAll()
     ?>
 
   <main class="container">
+    <?php 
+    
+      if(isset($_GET['success']) && $_GET['success'] == 'ajoute'){
+        ?>
+        <div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
+           L'événement a bien été enregistré dans la base de données.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <?php
+    }
+    ?>
+    
     <div class="py-5 text-center">
       <img class="d-block mx-auto mb-4" src="./../img/quest.png" alt="" width="100" height="80" />
       <h1 class="h2">Ajouter un évènement</h1>
@@ -52,18 +66,18 @@ $lesMatieres = $RequeteP->fetchAll()
     <div class="col-md-7 col-lg-8">
       <br>
       <h4 class="mb-3">INFORMATIONS</h4>
-      <form class="needs-validation" action="#" method="#" novalidate>
+      <form class="needs-validation" action="./ajouterE.php" method="POST" novalidate>
         <div class="row g-3">
 
 
 
           <div class="col-md-7">
             <label for="country" class="form-label">THÈMES</label>
-            <select class="form-select" id="country" required>
+            <select class="form-select" name="choixTheme" id="country" required>
               <?php 
-              foreach($lesMatieres as $laMatiere){
+              foreach($lesThemes as $leTheme){
                 ?>
-                <option value=""><?php echo $laMatiere['nomM'] ?></option>
+                <option value="<?php echo $leTheme["idT"]?>"><?php echo $leTheme['nomT'] ?></option>
                 <?php
               }
               ?>
@@ -74,6 +88,16 @@ $lesMatieres = $RequeteP->fetchAll()
             </div>
           </div>
 
+           <hr class="my-4" />
+
+          <div class="col-sm-12">
+            <label for="firstName" class="form-label">Nom de l'Evenement</label>
+            <input type="text" class="form-control" id="firstName" name="nomEvent" required />
+          
+            <div class="invalid-feedback">
+              Ce nom n'est pas valide !
+            </div>
+          </div>
           <hr class="my-4">
 
           <div class="my-3">
@@ -114,21 +138,12 @@ $lesMatieres = $RequeteP->fetchAll()
 
 
 
-          <hr class="my-4" />
-
-          <div class="col-sm-6">
-            <label for="firstName" class="form-label">Nom de l'Evenements</label>
-            <input type="text" class="form-control" id="firstName" placeholder="" value="" required />
-
-            <div class="invalid-feedback">
-              Ce nom n'est pas valide !
-            </div>
-          </div>
+         
 
           <hr class="my-4" />
           <div class="col-sm-10">
             <label for="firstName" class="form-label">Description</label>
-            <input type="text" class="form-control" id="firstName" placeholder="" value="" required />
+            <input type="text" class="form-control" id="firstName" placeholder="" name="description" required />
 
 
             <div class="invalid-feedback">
@@ -136,6 +151,34 @@ $lesMatieres = $RequeteP->fetchAll()
             </div>
           </div>
 
+            <hr class="my-4" />
+
+          <div class="col-sm-10">
+            <label for="firstName" class="form-label">Choix de l'image</label>
+            <div class="row g-3">
+        <?php 
+
+          $nbImages = 10;
+          for ($i = 1; $i <= $nbImages; $i++) {
+              ?>
+              
+              <div class="col-6 col-md-4 col-lg-3">
+                  <label class="w-100">
+                    <input type="radio" name="choixImage" value="<?php echo $i; ?>" class="input-hidden" required>
+                    <img src="./../img/events/<?php echo $i;?>.jpg" alt="image choix n° <?php echo $i; ?>" class="template-selector bg-light"
+                          onerror="this.src='https://via.placeholder.com/300x150?text=IMG+<?php echo $i; ?>'">
+                  </label>
+              </div>
+
+              <?php 
+          } 
+        ?>
+    </div>
+
+            <div class="invalid-feedback">
+              Cette description n'est pas valide !
+            </div>
+          </div>
 
           <hr class="my-4" />
           <button class="w-100 btn btn-primary btn-lg" type="submit">

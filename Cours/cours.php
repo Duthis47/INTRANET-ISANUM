@@ -37,8 +37,9 @@ if (!isset($_SESSION['idU'])) {
         <div class="container px-4 py-5" id="custom-cards">
             <div class="row justify-content-center">
                 <div class="col-md-6 col-lg-4">
+                    <form method="GET" action="">
                     <select class="form-select form-select-lg title-select fw-semibold text-center" 
-                            id="anneeFormation" name="anneeFormation" required>
+                            id="anneeFormation" name="anneeFormation" required onchange="this.form.submit()">
                         <option value="">Année de formation</option>
 
                         <?php
@@ -47,14 +48,15 @@ if (!isset($_SESSION['idU'])) {
                         $RequetePrep->execute();
 
                         while ($AnneeFormation = $RequetePrep->fetch()) {
-                            ?>
-                            <option value="<?php echo $AnneeFormation['idF']; ?>">
-                                <?php echo $AnneeFormation['nomF']; ?>
-                            </option>
-                            <?php
+                            $selected = (isset($_GET['anneeFormation']) && $_GET['anneeFormation'] == $AnneeFormation['idF']) ? 'selected' : '';
+                            
+                            echo "<option value=\"{$AnneeFormation['idF']}\" {$selected}>{$AnneeFormation['nomF']}</option>";   
+                                echo $AnneeFormation['nomF']; 
+                            echo "</option>";
                         }
                         ?>
                     </select>
+                    </form>
                 </div>
             </div>
 
@@ -63,8 +65,14 @@ if (!isset($_SESSION['idU'])) {
             <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
 
                 <?php
-                $ordreSQL = "SELECT * FROM Matiere";
-                $RequeteP = $pdo->prepare($ordreSQL);
+                if (!empty($_GET['anneeFormation'])) {
+                    $ordreSQL = "SELECT * FROM Matiere WHERE idF = :idF";
+                    $RequeteP = $pdo->prepare($ordreSQL);
+                    $RequeteP->bindParam(':idF', $_GET['anneeFormation'], PDO::PARAM_INT);
+                } else {
+                    $ordreSQL = "SELECT * FROM Matiere";
+                    $RequeteP = $pdo->prepare($ordreSQL);
+                }
                 $RequeteP->execute();
                 $lesMatieres = $RequeteP->fetchall();
                 foreach ($lesMatieres as $Matiere) {

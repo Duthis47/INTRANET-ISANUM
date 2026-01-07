@@ -1,5 +1,19 @@
 <?php
 session_start();
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+require_once './Connexion/laConnexion.php';
+
+$sql = "SELECT idE, titreE, descriptionE, numImage, dateE
+        FROM Evenements
+        ORDER BY dateE DESC
+        LIMIT 3";
+
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+$evenements = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -34,9 +48,21 @@ session_start();
   <section id="speakers" class="banner speakers p-y-3">
     <div class="wrapper">
       <h2 class="m-b-2 display-5 text-uppercase">Notre École ISA NUM</h2>
-      <a href="https://isanum.univ-pau.fr/fr/actualites.html" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#speakers_modal">
-        Voir le site
-      </a>
+      <?php
+      if (isset($_SESSION['idU'])) {
+        ?>
+          <a href="http://10.3.17.220/SAE/Cours/cours.php" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#speakers_modal">
+             Acceder au site
+          </a>
+      <?php
+      } else {
+          ?>
+          <a href="http://10.3.17.220/SAE/Authentification/login.php" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#speakers_modal">
+          Se connecter
+          </a>
+      <?php
+      }
+      ?>
     </div>
   </section>
 
@@ -49,55 +75,32 @@ session_start();
         <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
       </div>
       <div class="carousel-inner">
-        <div class="carousel-item active">
-          <svg aria-hidden="true" class="bd-placeholder-img" height="100%" preserveAspectRatio="xMidYMid slice"
-            width="100%" xmlns="http://www.w3.org/2000/svg">
-            <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
-          </svg>
-          <div class="container">
-            <div class="carousel-caption text-start">
-              <h1>Quel exploit </h1>
-              <p class="opacity-75">
-                LES ISA NUM sont certifiés du CCNA1 & 2 en 6 mois
-              </p>
-              <p>
-                <a class="btn btn-lg btn-primary" href="#">Éditeur</a>
-              </p>
+        <?php foreach ($evenements as $index => $event): ?>
+          <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>">
+
+            <img src="./img/events/<?= $event['numImage'] ?>.jpg"
+              class="d-block w-100 carousel-img"
+              alt="<?= htmlspecialchars($event['titreE']) ?>">
+
+            <div class="container">
+              <div class="carousel-caption <?= $index === 0 ? 'text-start' : ($index === 2 ? 'text-end' : '') ?>">
+                <h1><?= htmlspecialchars($event['titreE']) ?></h1>
+
+                <p class="opacity-75">
+                  <?= htmlspecialchars($event['descriptionE']) ?>
+                </p>
+
+                <p>
+                  <a class="btn btn-lg btn-primary"
+                    href="evenement.php?idE=<?= $event['idE'] ?>">
+                    Voir l’événement
+                  </a>
+                </p>
+              </div>
             </div>
+
           </div>
-        </div>
-        <div class="carousel-item">
-          <svg aria-hidden="true" class="bd-placeholder-img" height="100%" preserveAspectRatio="xMidYMid slice"
-            width="100%" xmlns="http://www.w3.org/2000/svg">
-            <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
-          </svg>
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>3 des ISA NUM</h1>
-              <p>
-                3 selectionnés pour participer aux évents championnats univ
-              </p>
-              <p><a class="btn btn-lg btn-primary" href="#">...</a></p>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <svg aria-hidden="true" class="bd-placeholder-img" height="100%" preserveAspectRatio="xMidYMid slice"
-            width="100%" xmlns="http://www.w3.org/2000/svg">
-            <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
-          </svg>
-          <div class="container">
-            <div class="carousel-caption text-end">
-              <h1>WEI 2026</h1>
-              <p>
-                Le WEI est de retour !!!!
-              </p>
-              <p>
-                <a class="btn btn-lg btn-primary" href="#">...</a>
-              </p>
-            </div>
-          </div>
-        </div>
+        <?php endforeach; ?>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
