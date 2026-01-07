@@ -32,6 +32,48 @@
     header("Location: http://10.3.17.220/SAE/Authentification/login.php");
     exit();
     }
+
+        $conversations = $mongoDB->conversations;
+        $messages = $mongoDB->messages;
+        $coursCollection = $mongoDB->cours;
+
+        $messagesNonLus = 0;
+        $idUser = $_SESSION['idU'];
+
+        $cursor = $conversations->find([
+            'participants' => $idUser
+        ]);
+
+        foreach ($cursor as $conv) {
+
+            // Récupérer le dernier message de la conversation
+            $lastMsg = $messages->findOne(
+                ['conversation_id' => $conv['_id']],
+                ['sort' => ['created_at' => -1]]
+            );
+
+            if ($lastMsg && $lastMsg['sender'] != $idUser) {
+                $messagesNonLus++;
+            }
+        }
+
+        $dernierCours = $coursCollection->findOne([], 
+        [
+            'sort' => ['date' => -1]
+        ]
+);
+
+// Date du jour
+$today = date('Y-m-d');
+
+
+// prochain évènement à venir
+$sqlNext = "SELECT idE, titreE, descriptionE, numImage, dateE, DateF FROM Evenements WHERE dateE >= :today ORDER BY dateE ASC LIMIT 1";
+
+    $stmt = $pdo->prepare($sqlNext);
+    $stmt->bindValue(':today', $today, PDO::PARAM_STR);
+    $stmt->execute();
+    $event = $stmt->fetch(PDO::FETCH_ASSOC);
     ?>
 
     <body>
@@ -88,9 +130,9 @@
                             <div class="mb-1 ">Nouveaux messages</div>
                             <p class="mb-auto">
                                 <br>
-                                Vous avez reçu<strong> 1 Nouveaux </strong> message(s) non lu(s)
+                                Vous avez reçu<strong> <?php echo $messagesNonLus; ?></strong> message(s) non lu(s)
                             </p>
-                            <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
+                            <a href="http://10.3.17.220/SAE/Message/Message.php" class="icon-link gap-1 icon-link-hover stretched-link">
                                 Voir plus  
                                 <svg class="bi" aria-hidden="true">
                                 <use xlink:href="#chevron-right"></use>
@@ -110,10 +152,15 @@
                             <strong class="d-inline-block mb-2 color-bleu-system">Mes derniers cours</strong>
                             <br>
                             <p class="card-text mb-auto">
-                                Maths - TD - Intitulé
+                                <?php if ($dernierCours): ?>
+                                    <?= htmlspecialchars($dernierCours['type']) ?> —
+                                    <?= htmlspecialchars($dernierCours['titre']) ?>
+                                <?php else: ?>
+                                    Aucun cours disponible
+                                <?php endif; ?>
                             </p>
                             <br>
-                            <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
+                            <a href="http://10.3.17.220/SAE/Cours/cours.php" class="icon-link gap-1 icon-link-hover stretched-link">
                                 Voir les autres cours
 
                             </a>
@@ -129,13 +176,24 @@
                     <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative gradende-bleu">
                         <div class="col p-4 d-flex flex-column position-static">
                             <strong class="d-inline-block mb-2 color-bleu-system">Évènements</strong>
-                            <h3 class="mb-0">Soirée chez X</h3>
-                            <br>
-                            <p class="mb-auto">
-                                Ici, il y aura la description choisi par la personne
-                            </p>
-                            <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
-                                Voir les évènements
+                                <?php if ($event): ?>
+                                    <h3 class="mb-0"><?= htmlspecialchars($event['titreE']) ?></h3>
+                                    <br>
+                                    <p class="mb-auto">
+                                        <?= htmlspecialchars($event['descriptionE']) ?>
+                                    </p>
+
+                                    <a href="http://10.3.17.220/SAE/Evenements/Evenements.php?idE=<?= $event['idE'] ?>"
+                                    class="icon-link gap-1 icon-link-hover stretched-link">
+                                        Voir l’évènement
+                                    </a>
+                                <?php else: ?>
+                                    <h3 class="mb-0">Aucun évènement</h3>
+                                    <br>
+                                    <p class="mb-auto">
+                                        Aucun évènement prévu prochainement.
+                                    </p>
+                                <?php endif; ?>
                                 <svg class="bi" aria-hidden="true">
                                 <use xlink:href="#chevron-right"></use>
                                 </svg>

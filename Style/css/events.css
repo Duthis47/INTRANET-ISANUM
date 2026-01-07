@@ -1,0 +1,27 @@
+.input-hidden {
+    position: absolute;
+    left: -9999px;
+}
+
+.template-selector {
+    cursor: pointer;
+    width: 100%;
+    height: 150px;          
+    object-fit: cover;       
+    border: 5px solid transparent; 
+    border-radius: 10px;
+    transition: all 0.2s ease-in-out;
+    opacity: 0.8;
+}
+
+.template-selector:hover {
+    opacity: 1;
+    transform: scale(1.02);
+}
+
+.input-hidden:checked + .template-selector {
+    border-color: #0d6efd;   
+    opacity: 1;
+    transform: scale(1.05);  
+    box-shadow: 0 0 15px rgba(13, 110, 253, 0.5); 
+}

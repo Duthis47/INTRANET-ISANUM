@@ -3,6 +3,7 @@ html {
     background-color: #1b1d21;
     overflow-x: hidden;
     color: white;
+    height: 100%;
 }
 
 nav{
@@ -210,6 +211,10 @@ li small {
 /* ################ Message ################### */
 /* ########################################## */
 
+main.d-flex {
+    height: calc(100vh - 56px); /* 56px = hauteur approximative du header */
+    overflow: hidden;
+}
 
 /* --- Barre latérale gauche --- */
 .sidebar {
@@ -218,6 +223,7 @@ li small {
     border-right: 1px solid #444;
     overflow-y: auto;
     overflow-x: hidden;
+    height: 100%;
 }
 
 .sidebar h5 {
@@ -246,12 +252,19 @@ li small {
     display: flex;
     flex-direction: column;
     background-color: #1e2124;
+    height: 100%;
     overflow: hidden;
+}
+
+.chat-header {
+    flex-shrink: 0;
+    min-height: 60px;
 }
 
 .chat-messages {
     flex: 1;
     overflow-y: auto;
+    overflow-x: hidden;
     display: flex;
     flex-direction: column-reverse; /* si on enlève ça, ça va pas scroll dans le bon sens*/
     gap: 8px;
@@ -278,6 +291,7 @@ li small {
 }
 
 .chat-input {
+    flex-shrink: 0;
     border-top: 1px solid #444;
     padding: 10px 15px;
     display: flex;
@@ -286,6 +300,10 @@ li small {
     position: sticky;
     bottom: 0;
     border-top: 1px solid #ccc;
+}
+
+.chat-input d-flex {
+    padding-bottom: 10px;
 }
 
 .chat-input input.form-control {

@@ -407,5 +407,10 @@ footer {
   justify-content: space-between;
   align-items: center;
 }
-
+#myCarousel .carousel-caption,
+#myCarousel .carousel-caption h1,
+#myCarousel .carousel-caption p,
+#myCarousel .carousel-caption a {
+  color: #ffffff !important;
+}
 /*# sourceMappingURL=Accueil.css.map */
