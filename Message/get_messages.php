@@ -16,7 +16,7 @@ $convId = $_GET['conv'];
 try {
     $convObjectId = new MongoDB\BSON\ObjectId($convId);
     
-    // check si le user fait partie de la conv
+    // check si l'utilisateur fait partie de la conv
     $conversation = $mongoDB->conversations->findOne([
         '_id' => $convObjectId,
         'participants' => (int)$userId
@@ -27,7 +27,7 @@ try {
         exit();
     }
     
-    // recup des mess du plus récent au plus vieux
+    // recup des messages du plus récent au plus vieux
     $messages = $mongoDB->messages->find(
         ['conversation_id' => $convObjectId],
         ['sort' => ['created_at' => -1]]

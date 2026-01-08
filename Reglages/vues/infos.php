@@ -1,79 +1,79 @@
-
-<section class="settings-content d-flex flex-column justify-content-center align-items-center flex-grow-1 py-5">
-    <div class="w-75">
-        <h2 class="text-center mb-4">Paramètres du Compte</h2>
-
-        <form method="POST" action="">
-
-            <?php
-            if (isset($msg_error)) {
-                echo '<div class="alert alert-danger">' . $msg_error . '</div>';
-            }
-            ?>
-            <?php
-            if (isset($msg_success)) {
-                echo '<div class="alert alert-success">' . $msg_success . '</div>';
-            }
-            ?>
-
-            <div class="card shadow-sm border-0 rounded-4 mb-4" style="background-color: #2c2f33;">
-                <div class="card-body">
-                    <label for="nom" class="form-label fw-semibold text-secondary">Nom</label>
-                    <input type="text" id="nom" name="nom" class="form-control" 
-                           value="<?php echo isset($user['nom']) ? $user['nom'] : $_SESSION['nomU']; ?>" required>
-                </div>
-            </div>
-
-            <div class="card shadow-sm border-0 rounded-4 mb-4" style="background-color: #2c2f33;">
-                <div class="card-body">
-                    <label for="prenom" class="form-label fw-semibold text-secondary">Prénom</label>
-                    <input type="text" id="prenom" name="prenom" class="form-control" 
-                           value="<?php echo isset($user['prenom']) ? $user['prenom'] : $_SESSION['prenomU']; ?>" required>
-                </div>
-            </div>
-
-            <div class="card shadow-sm border-0 rounded-4 mb-4" style="background-color: #2c2f33;">
-    <div class="card-body">
-        <label for="year" class="form-label fw-semibold text-secondary">Année de formation</label>
-        <select class="form-select" id="year" name="year">
-            
-            <option value="1" <?php echo (isset($_SESSION['idF']) && $_SESSION['idF'] == 1) ? 'selected' : ''; ?>>
-                ISA NUM 1
-            </option>
-
-            <option value="2" <?php echo (isset($_SESSION['idF']) && $_SESSION['idF'] == 2) ? 'selected' : ''; ?>>
-                ISA NUM 2
-            </option>
-
-            <option value="3" <?php echo (isset($_SESSION['idF']) && $_SESSION['idF'] == 3) ? 'selected' : ''; ?>>
-                ISA NUM 3
-            </option>
-
-            <option value="4" <?php echo (isset($_SESSION['idF']) && $_SESSION['idF'] == 4) ? 'selected' : ''; ?>>
-                ISA NUM 4
-            </option>
-
-            <option value="5" <?php echo (isset($_SESSION['idF']) && $_SESSION['idF'] == 5) ? 'selected' : ''; ?>>
-                ISA NUM 5
-            </option>
-
-        </select>
-    </div>
-</div>
-
-            <div class="text-center">
-                <button type="submit" name="btn_update_infos" class="btn btn-primary rounded-pill px-5 py-2 fw-semibold">
-                    Enregistrer les modifications
-                </button>
-            </div>
-
-        </form>
-    </div>
-</section>
-
 <?php
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHP.php to edit this template
- */
+
+$msg_success = null;
+$msg_error = null;
+
+if (isset($_POST['btn_update_infos'])) {
+    $nom = htmlspecialchars($_POST['nom']);
+    $prenom = htmlspecialchars($_POST['prenom']);
+    $idF = intval($_POST['year']);
+
+    try {
+        $sql = "UPDATE Utilisateurs SET nomU = :nom, prenomU = :prenom, idF = :idF WHERE idU = :idU";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(['nom' => $nom, 'prenom' => $prenom, 'idF' => $idF, 'idU' => $idUser]);
+        
+        
+        $_SESSION['nomU'] = $nom;
+        $_SESSION['prenomU'] = $prenom;
+        $_SESSION['idF'] = $idF;
+        $currentUser['nomU'] = $nom; 
+        $currentUser['prenomU'] = $prenom;
+        $currentUser['idF'] = $idF;
+        
+        $msg_success = "Informations mises à jour.";
+    } catch (PDOException $e) {
+        $msg_error = "Erreur SQL : " . $e->getMessage();
+    }
+}
 ?>
+
+<h2 class="mb-4 text-center">Mes Informations</h2>
+
+<?php if ($msg_error): ?>
+    <div class="alert alert-danger mb-4"><?= $msg_error ?></div>
+<?php endif; ?>
+<?php if ($msg_success): ?>
+    <div class="alert alert-success mb-4"><?= $msg_success ?></div>
+<?php endif; ?>
+
+<form method="POST" action="?page=infos">
+    
+    <div class="card mb-3">
+        <div class="card-body">
+            <label for="nom" class="form-label" style="color: black ;">Nom</label>
+            <input type="text" id="nom" name="nom" class="form-control" 
+                   value="<?php echo htmlspecialchars($currentUser['nomU']); ?>" required>
+        </div>
+    </div>
+
+    <div class="card mb-3">
+        <div class="card-body">
+            <label for="prenom" class="form-label" style="color: black;">Prénom</label>
+            <input type="text" id="prenom" name="prenom" class="form-control" 
+                   value="<?php echo htmlspecialchars($currentUser['prenomU']); ?>" required>
+        </div>
+    </div>
+
+    <div class="card mb-3">
+        <div class="card-body">
+            <label for="year" class="form-label" style="color: black;">Année de formation</label>
+            <select class="form-select" id="year" name="year">
+                <?php 
+                $currentIdF = isset($currentUser['idF']) ? $currentUser['idF'] : 1;
+                for ($i = 1; $i <= 5; $i++): ?>
+                    <option value="<?= $i ?>" <?= ($currentIdF == $i) ? 'selected' : '' ?>>
+                        ISA NUM <?= $i ?>
+                    </option>
+                <?php endfor; ?>
+            </select>
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <button type="submit" name="btn_update_infos" class="btn btn-primary rounded-pill px-5">
+            Confirmer
+        </button>
+    </div>
+
+</form>

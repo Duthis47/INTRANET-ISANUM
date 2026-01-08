@@ -43,16 +43,13 @@ if (!empty($convId)) {
         if ($conversation) {
             $participants = $conversation['participants']->getArrayCopy();
 
-            $otherUserId = ($participants[0] == $currentUser)
+            $otherUserId = ($participants[0] == $currentUser) 
                 ? $participants[1]
                 : $participants[0];
 
-            $stmt = $pdo->prepare("
-                SELECT prenomU, nomU 
-                FROM Utilisateurs 
-                WHERE idU = ?
-            ");
-            $stmt->execute([$otherUserId]);
+            $stmt = $pdo->prepare("SELECT prenomU, nomU FROM Utilisateurs WHERE idU = :UnionId");
+            $stmt->bindValue(':UnionId', $otherUserId, PDO::PARAM_INT);
+            $stmt->execute();
 
             if ($u = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 $chatUsername = $u['prenomU'].' '.$u['nomU'];
@@ -60,7 +57,7 @@ if (!empty($convId)) {
         }
 
     } catch (Exception $e) {
-        // convId invalide → on ne fait rien
+        // identifiant invalide, le nom par default sera utilisé
     }
 }
 
@@ -129,7 +126,7 @@ if (!empty($convId)) {
             ['participants' => $currentUser],
             ['sort' => ['updated_at' => -1]]
         );
-        foreach ($convs as $conv):
+        foreach ($convs as $conv){
           $participants = $conv['participants']->getArrayCopy();
 
           if (!in_array($currentUser, $participants)) {
@@ -139,8 +136,9 @@ if (!empty($convId)) {
             $otherId = ($participants[0] == $currentUser)
                 ? $participants[1]
                 : $participants[0];
-            $stmt = $pdo->prepare("SELECT nomU, prenomU FROM Utilisateurs WHERE idU = ?");
-            $stmt->execute([$otherId]);
+            $stmt = $pdo->prepare("SELECT nomU, prenomU FROM Utilisateurs WHERE idU = :UnionId");
+            $stmt->bindValue(':UnionId', $otherId, PDO::PARAM_INT);
+            $stmt->execute();
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
             $username = $user 
               ? $user['prenomU'].' '.$user['nomU'] 
@@ -151,8 +149,8 @@ if (!empty($convId)) {
             <strong><?= htmlspecialchars($username) ?></strong><br>
             <small><?= htmlspecialchars($conv['last_message']) ?></small>
         </a>
-        <?php endforeach; ?>
-</div>
+        <?php } ?>
+        </div>
     </aside>
 
     <!-- Zone de mess -->
@@ -165,13 +163,6 @@ if (!empty($convId)) {
 
     <div class="chat-messages flex-grow-1 p-3" id="chatMessages">
     <?php
-if (!empty($convId)) {
-    try {
-        $convObjectId = new MongoDB\BSON\ObjectId($convId);
-    } catch (Exception $e) {
-        $convObjectId = null;
-    }
-}
 
 if ($convObjectId) {
     // Récupérer les messages dans l'ordre décroissant (plus récent en premier)
@@ -180,12 +171,13 @@ if ($convObjectId) {
         ['sort' => ['created_at' => -1]]
     );
 
-        foreach ($messages as $msg):
+        foreach ($messages as $msg){
     ?>
     <div class="message <?= ((int)$msg['sender'] === (int)$currentUser) ? 'sent' : 'received' ?>">
         <?= htmlspecialchars($msg['message']) ?>
     </div>
-    <?php endforeach; } ?>
+    <?php }
+  } ?>
     </div>
 
       <div class="chat-input d-flex">
@@ -212,6 +204,43 @@ if ($convObjectId) {
           aria-label="Search">
       </div>
     </form>
+    <div class="p-3">
+        <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#newConvModal">
+            + Nouvelle conversation
+        </button>
+      </div>
+
+        <div class="list-group list-group-flush">
+        <?php
+        $convs = $mongoDB->conversations->find(
+            ['participants' => $currentUser],
+            ['sort' => ['updated_at' => -1]]
+        );
+        foreach ($convs as $conv){
+          $participants = $conv['participants']->getArrayCopy();
+
+          if (!in_array($currentUser, $participants)) {
+                continue;
+            }
+
+            $otherId = ($participants[0] == $currentUser)
+                ? $participants[1]
+                : $participants[0];
+            $stmt = $pdo->prepare("SELECT nomU, prenomU FROM Utilisateurs WHERE idU = :UnionId");
+            $stmt->bindValue(':UnionId', $otherId, PDO::PARAM_INT);
+            $stmt->execute();
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            $username = $user 
+              ? $user['prenomU'].' '.$user['nomU'] 
+              : 'Utilisateur inconnu';
+        ?>
+        <a href="Message.php?conv=<?= $conv['_id'] ?>"
+        class="list-group-item list-group-item-action <?= ($convId == (string)$conv['_id']) ? 'active' : '' ?>">
+            <strong><?= htmlspecialchars($username) ?></strong><br>
+            <small><?= htmlspecialchars($conv['last_message']) ?></small>
+        </a>
+        <?php } ?>
+        </div>
   </div>
 
 <div class="modal fade" id="newConvModal">
@@ -225,19 +254,16 @@ if ($convObjectId) {
       <div class="modal-body">
         <select name="receiver" class="form-select" required>
           <?php
-          $stmt = $pdo->prepare("
-                SELECT idU, prenomU, nomU 
-                FROM Utilisateurs 
-                WHERE idU != ?
-            ");
-            $stmt->execute([$currentUser]);
+          $stmt = $pdo->prepare("SELECT idU, prenomU, nomU FROM Utilisateurs WHERE idU != :currentUser");
+          $stmt->bindValue(':currentUser', $currentUser, PDO::PARAM_INT);
+          $stmt->execute();
 
-            while ($u = $stmt->fetch(PDO::FETCH_ASSOC)):
+            while ($u = $stmt->fetch(PDO::FETCH_ASSOC)){
             ?>
               <option value="<?= $u['idU'] ?>">
                 <?= htmlspecialchars($u['prenomU'].' '.$u['nomU']) ?>
               </option>
-            <?php endwhile; ?>
+            <?php } ?>
         </select>
       </div>
 
@@ -279,7 +305,7 @@ if ($convObjectId) {
                 
                 if (!data.messages) return;
                 
-                // On clear puis on update les messages
+                // On clear/update les messages
                 chatMessages.innerHTML = '';
                 
                 data.messages.forEach(message => {
