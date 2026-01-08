@@ -68,13 +68,13 @@ if (!isset($_SESSION['idU'])) {
                 Les questions
             </h1>
         <!-- Bouton nouvelle question -->
-        <?php if (isset($_SESSION["idU"])): ?>
+        <?php if (isset($_SESSION["idU"])){ ?>
             <div class="text-center mb-4">
                 <a href="ajouterQuestion.php" class="btn btn-primary">
                     <i class="bi bi-plus-circle"></i> Nouvelle question
                 </a>
             </div>
-        <?php endif; ?>
+        <?php } ?>
 
             <!-- Barre de recherche -->
             <form class="d-flex justify-content-center mb-4" role="search" onsubmit="return false;">
@@ -91,7 +91,7 @@ if (!isset($_SESSION['idU'])) {
             <div class="col-lg-6 px-4">
                 <?php
                 $i = 0;
-                foreach ($listeQuestions as $q):
+                foreach ($listeQuestions as $q){
                     $idU = $q['user_id'] ?? null;
                     $username = 'Utilisateur';
 
@@ -120,7 +120,7 @@ if (!isset($_SESSION['idU'])) {
                     </div>
                 <?php
                     $i++;
-                endforeach;
+                }
                 ?>
             </div>
         </div>
@@ -138,7 +138,6 @@ if (!isset($_SESSION['idU'])) {
     <script src="./searchB.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="./../assets/js/color-modes.js"></script>
 </body>
 
 </html>

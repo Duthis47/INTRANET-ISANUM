@@ -199,7 +199,7 @@ $lesThemes = $RequeteP->fetchAll();
 
 
   </div>
-    <script src="./multiJour.js"></script>
+    <script src="./../Style/js/multiJour.js"></script>
     <script src="./checkout.js" class="astro-vvvwv3sm"></script>
 </body>
 

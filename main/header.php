@@ -49,16 +49,16 @@
                             <div class="nav-item dropdown ms-lg-auto mt-2 mt-lg-0 text-center">
                                 <a class="nav-link dropdown-toggle text-white" href="#" id="navbarProfil" role="button"
                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    <?= htmlspecialchars($_SESSION['prenomU'] ?? 'Identifiant') ?>
+                                    <?php echo htmlspecialchars($_SESSION['prenomU'] ?? 'Identifiant') ?>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark text-center" aria-labelledby="navbarProfil">
-                                    <li><a class="dropdown-item" href="http://10.3.17.220/SAE/Reglages/informations.php">Mon Compte</a></li>
+                                    <li><a class="dropdown-item" href="http://10.3.17.220/SAE/Reglages/parametres.php?page=infos">Mon Compte</a></li>
                                     <?php
-                                    if (isset($_SESSION['idU'])): ?>
+                                    if (isset($_SESSION['idU'])){ ?>
                                         <li><a class="dropdown-item" href="http://10.3.17.220/SAE/Connexion/deconnexion.php">Se Déconnecter</a></li>
-                                    <?php else: ?>
+                                    <?php } else { ?>
                                         <li><a class="dropdown-item" href="http://10.3.17.220/SAE/Connexion/connexion.php">Se Connecter</a></li>
-                                    <?php endif; ?>
+                                    <?php } ?>
                                 </ul>
                             </div>
 

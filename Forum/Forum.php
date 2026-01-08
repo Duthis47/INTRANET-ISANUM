@@ -110,18 +110,18 @@ function getUsername(PDO $pdo, int $idU): string {
             <h2>Questions</h2>
             <br>
 
-            <?php if (empty($questionsSidebar)): ?>
+            <?php if (empty($questionsSidebar)) {  ?>
                 <p class="text-muted">Aucune question</p>
-            <?php endif; ?>
+            <?php } ?>
 
-            <?php foreach ($questionsSidebar as $q): ?>
+            <?php foreach ($questionsSidebar as $q) { ?>
                 <p>
                     <a href="Forum.php?idQ=<?= $q['_id'] ?>"
                     class="text-decoration-none">
                         <?= htmlspecialchars($q['titre'], ENT_QUOTES, 'UTF-8') ?>
                     </a>
                 </p>
-            <?php endforeach; ?>
+            <?php } ?>
 
             <hr>
 
@@ -155,7 +155,7 @@ function getUsername(PDO $pdo, int $idU): string {
                 </article>
             <?php endif; ?>
 
-            <?php foreach ($listeReponses as $r): ?>
+            <?php foreach ($listeReponses as $r){ ?>
                 <article class="message-slide">
                     <h2>
                         <?= htmlspecialchars(getUsername($pdo, $r['user_id']), ENT_QUOTES, 'UTF-8') ?>
@@ -169,7 +169,7 @@ function getUsername(PDO $pdo, int $idU): string {
                         le <?= $r['date_creation']->toDateTime()->format("d/m/Y") ?>
                     </p>
                 </article>
-            <?php endforeach; ?>
+            <?php } ?>
 
             <!-- ZONE RÉPONDRE -->
             <section class="forum-input d-flex justify-content-center align-items-center p-3 border-top mt-4">

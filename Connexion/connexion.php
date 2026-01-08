@@ -10,8 +10,9 @@ if (!empty($_POST['identification']) && !empty($_POST['password'])) {
     $motpasse = $_POST['password'];
 
     try {
-        $recupUser = $pdo->prepare('SELECT * FROM Utilisateurs WHERE emailU = ?');
-        $recupUser->execute([$identifiant]);
+        $recupUser = $pdo->prepare('SELECT * FROM Utilisateurs WHERE emailU = :idTry');
+        $recupUser->bindValue(':idTry', $identifiant, PDO::PARAM_STR);
+        $recupUser->execute();
 
         if ($recupUser->rowCount() > 0) {
             $user = $recupUser->fetch();
@@ -26,7 +27,11 @@ if (!empty($_POST['identification']) && !empty($_POST['password'])) {
                 $_SESSION['dernierConnexion'] = $user['dernierConnexion'];
                 $_SESSION['idF'] = $user['idF'];
 
-                header("Location: http://10.3.17.220/SAE/Cours/cours.php");
+                $sqlUpdateConnexion = $pdo->prepare("UPDATE Utilisateurs SET dernierConnexion = NOW() WHERE idU = :idCurrent");
+                $sqlUpdateConnexion->bindValue(':idCurrent', $user['idU'], PDO::PARAM_INT);
+                $sqlUpdateConnexion->execute();
+
+                header("Location: http://10.3.17.220/SAE/TableaudeBord/tableauDeBord.php");
                 exit();
 
             } else {

@@ -45,26 +45,27 @@ $evenements = $stmt->fetchAll(PDO::FETCH_ASSOC);
   ?>
 
 
-  <section id="speakers" class="banner speakers p-y-3">
-    <div class="wrapper">
-      <h2 class="m-b-2 display-5 text-uppercase">Notre École ISA NUM</h2>
-      <?php
-      if (isset($_SESSION['idU'])) {
-        ?>
-          <a href="http://10.3.17.220/SAE/Cours/cours.php" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#speakers_modal">
-             Acceder au site
-          </a>
-      <?php
-      } else {
-          ?>
-          <a href="http://10.3.17.220/SAE/Authentification/login.php" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#speakers_modal">
-          Se connecter
-          </a>
-      <?php
-      }
-      ?>
+  <section id="speakers" class="banner speakers">
+    
+    <video autoplay muted loop playsinline class="video-bg">
+        <source src="./img/accueil.MP4" type="video/mp4">
+    </video>
+
+    <div class="video-overlay"></div>
+
+    <div class="wrapper position-relative text-center" style="z-index: 2;">
+      
+      <h2 class="m-b-2 display-5 text-uppercase text-white">Notre École ISA NUM</h2>
+      
+      <?php if (isset($_SESSION['idU'])) { ?>
+          <a href="http://10.3.17.220/SAE/Cours/cours.php" class="btn btn-primary btn-lg mt-3">Accéder au site</a>
+      <?php } else { ?>
+          <a href="http://10.3.17.220/SAE/Authentification/login.php" class="btn btn-primary btn-lg mt-3">Se connecter</a>
+      <?php } ?>
+
     </div>
-  </section>
+
+</section>
 
   <section>
     <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
@@ -92,7 +93,7 @@ $evenements = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 <p>
                   <a class="btn btn-lg btn-primary"
-                    href="evenement.php?idE=<?= $event['idE'] ?>">
+                    href="http://10.3.17.220/SAE/Evenements/Evenements.php">
                     Voir l’événement
                   </a>
                 </p>

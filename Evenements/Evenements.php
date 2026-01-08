@@ -1,5 +1,6 @@
 <?php
 require './../Connexion/laConnexion.php';
+session_start();
 
 $ordreSQL = "SELECT * FROM Evenements e JOIN Theme t ON e.idT = t.idT JOIN Utilisateurs u ON e.idU = u.idU WHERE e.dateE >= CURDATE() LIMIT 3";
 $RequeteP = $pdo->prepare($ordreSQL);
@@ -36,7 +37,7 @@ $moisMap = [
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
   
   <script src="./../Style/Bootstrap/assets/js/color-modes.js"></script>
-  <script src="./../Style/Bootstrap/assets/dist/js/bootstrap.bundle.min.js"></script>
+  
 
   <link href="./../Style/Bootstrap/assets/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="./../Style/css/carousel.css" rel="stylesheet" />
@@ -205,7 +206,8 @@ foreach($lesEvenements as $lEvent){
             Ajouter un evenement
       </a>
   </main>
-  <script src="./../Style/Bootstrap/assets/dist/js/bootstrap.bundle.min.js" class="astro-vvvwv3sm"></script>
+  <script src="./../Style/Bootstrap/assets/dist/js/bootstrap.bundle.min.js"></script>
+  
 </body>
 
 </html>
