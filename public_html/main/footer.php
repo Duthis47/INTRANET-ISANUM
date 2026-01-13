@@ -13,10 +13,10 @@
 
                 <ul class="nav justify-content-center flex-wrap mt-2">
                     <li class="nav-item">
-                        <a href="http://10.3.17.217:8090/index.php" class="nav-link px-2">Accueil</a>
+                        <a href="/index.php" class="nav-link px-2">Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <a href="http://10.3.17.217:8090/Forum/questionsForum.php" class="nav-link px-2">FAQ</a>
+                        <a href="/Forum/questionsForum.php" class="nav-link px-2">FAQ</a>
                     </li>
                     <li class="nav-item">
                         <a href="https://isanum.univ-pau.fr/fr/actualites.html" class="nav-link px-2">À propos</a>

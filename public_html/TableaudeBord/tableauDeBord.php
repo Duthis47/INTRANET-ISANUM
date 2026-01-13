@@ -153,7 +153,7 @@ require '../Connexion/laConnexion.php';
 require '../Connexion/noSQLConnexion.php';
 
 if (!isset($_SESSION['idU'])) {
-    header("Location: http://10.3.17.217:8090/Authentification/login.php");
+    header("Location: /Authentification/login.php");
     exit();
 }
 
@@ -235,7 +235,7 @@ $event = $stmt->fetch(PDO::FETCH_ASSOC);
                             <?php endif; ?>
                         </p>
                         <br>
-                        <a href="http://10.3.17.217:8090/Cours/cours.php?anneeFormation=<?php echo $_SESSION['idF']?>" class="icon-link gap-1 icon-link-hover stretched-link">
+                        <a href="/Cours/cours.php?anneeFormation=<?php echo $_SESSION['idF']?>" class="icon-link gap-1 icon-link-hover stretched-link">
                             Voir les autres cours
                         </a>
                     </div>
@@ -254,7 +254,7 @@ $event = $stmt->fetch(PDO::FETCH_ASSOC);
                             <p class="mb-auto">
                                 <?= htmlspecialchars($event['descriptionE']) ?>
                             </p>
-                            <a href="http://10.3.17.217:8090/Evenements/Evenements.php?idE=<?= $event['idE'] ?>"
+                            <a href="/Evenements/Evenements.php?idE=<?= $event['idE'] ?>"
                                 class="icon-link gap-1 icon-link-hover stretched-link">
                                 Voir l'évènement
                             </a>
@@ -333,7 +333,7 @@ $event = $stmt->fetch(PDO::FETCH_ASSOC);
                             <br>
                             Vous avez reçu<strong> <?php echo $messagesNonLus; ?></strong> message(s) non lu(s)
                         </p>
-                        <a href="http://10.3.17.217:8090/Message/Message.php" class="icon-link gap-1 icon-link-hover stretched-link">
+                        <a href="/Message/Message.php" class="icon-link gap-1 icon-link-hover stretched-link">
                             Voir plus
                             <svg class="bi" aria-hidden="true">
                                 <use xlink:href="#chevron-right"></use>

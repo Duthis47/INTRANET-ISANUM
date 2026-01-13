@@ -204,7 +204,7 @@ foreach($lesEvenements as $lEvent){
 
 
 
-     <a href="http://10.3.17.217:8090/Evenements/ajoutEvents.php" class="btn btn-primary btn-floating btn-add-course">
+     <a href="/Evenements/ajoutEvents.php" class="btn btn-primary btn-floating btn-add-course">
             <i class="bi bi-plus-lg me-2"></i>
             Ajouter un evenement
       </a>

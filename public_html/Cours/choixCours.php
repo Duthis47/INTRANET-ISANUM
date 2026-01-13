@@ -5,7 +5,7 @@ require '../Connexion/laConnexion.php';
 require '../Connexion/noSQLConnexion.php'; 
 
 if (!isset($_SESSION['idU'])) {
-    header("Location: http://10.3.17.217:8090/Authentification/login.php");
+    header("Location: /Authentification/login.php");
     exit();
 }
 

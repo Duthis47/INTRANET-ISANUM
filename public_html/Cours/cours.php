@@ -2,7 +2,7 @@
 session_start();
 include_once ('./../Connexion/laConnexion.php');
 if (!isset($_SESSION['idU'])) {
-    header("Location:http://10.3.17.217:8090/Authentification/login.php");
+    header("Location:/Authentification/login.php");
     exit();
 }
 ?>
@@ -112,7 +112,7 @@ if (!isset($_SESSION['idU'])) {
             </div>
         </div>
 
-        <a href="http://10.3.17.217:8090/Cours/ajoutDoc.php"
+        <a href="/Cours/ajoutDoc.php"
            class="btn btn-primary btn-floating btn-add-course">
             <i class="bi bi-plus-lg me-2"></i>
             Ajouter un cours

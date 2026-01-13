@@ -89,7 +89,7 @@ if (isset($_POST['cmdconnect'])) {
                 $_SESSION['nom'] = $user['Nom'];
 
                 // Redirection vers la page d'accueil après la connexion réussie
-                header("Location: http://10.3.17.217:8090/TableaudeBord/tableauDeBord.php"); // Remplacez par la page de votre choix
+                header("Location: /TableaudeBord/tableauDeBord.php"); // Remplacez par la page de votre choix
                 exit();
             } else {
                 echo "Votre identifiant et/ou mot de passe est incorrect...";
