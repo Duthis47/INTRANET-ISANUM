@@ -16,7 +16,7 @@ $listeQuestions = iterator_to_array(
 );
 
 if (!isset($_SESSION['idU'])) {
-    header("Location:http://10.3.17.217/Authentification/login.php");
+    header("Location:http://10.3.17.217:8090/Authentification/login.php");
     exit();
 }
 

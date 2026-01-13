@@ -1,6 +1,9 @@
 <?php
 require './../Connexion/laConnexion.php';
-session_start();
+
+if (!isset($_SESSION)){
+  session_start();
+}
 
 $ordreSQL = "SELECT * FROM Evenements e JOIN Theme t ON e.idT = t.idT JOIN Utilisateurs u ON e.idU = u.idU WHERE e.dateE >= CURDATE() LIMIT 3";
 $RequeteP = $pdo->prepare($ordreSQL);
@@ -201,7 +204,7 @@ foreach($lesEvenements as $lEvent){
 
 
 
-     <a href="http://10.3.17.217/Evenements/ajoutEvents.php" class="btn btn-primary btn-floating btn-add-course">
+     <a href="http://10.3.17.217:8090/Evenements/ajoutEvents.php" class="btn btn-primary btn-floating btn-add-course">
             <i class="bi bi-plus-lg me-2"></i>
             Ajouter un evenement
       </a>

@@ -31,7 +31,7 @@ if (!empty($_POST['identification']) && !empty($_POST['password'])) {
                 $sqlUpdateConnexion->bindValue(':idCurrent', $user['idU'], PDO::PARAM_INT);
                 $sqlUpdateConnexion->execute();
 
-                header("Location: http://10.3.17.217/TableaudeBord/tableauDeBord.php");
+                header("Location: http://10.3.17.217:8090/TableaudeBord/tableauDeBord.php");
                 exit();
 
             } else {
@@ -50,7 +50,7 @@ if (!empty($_POST['identification']) && !empty($_POST['password'])) {
 } else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $erreur = "Veuillez remplir tous les champs.";
 }
-header("Location: http://10.3.17.217/Authentification/login.php?erreur=".$erreur)
+header("Location: http://10.3.17.217:8090/Authentification/login.php?erreur=".$erreur)
 ?>
 <?php
 /*

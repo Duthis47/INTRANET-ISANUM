@@ -58,9 +58,9 @@ $evenements = $stmt->fetchAll(PDO::FETCH_ASSOC);
       <h2 class="m-b-2 display-5 text-uppercase text-white">Notre École ISA NUM</h2>
       
       <?php if (isset($_SESSION['idU'])) { ?>
-          <a href="http://10.3.17.217/Cours/cours.php" class="btn btn-primary btn-lg mt-3">Accéder au site</a>
+          <a href="http://10.3.17.217:8090/Cours/cours.php" class="btn btn-primary btn-lg mt-3">Accéder au site</a>
       <?php } else { ?>
-          <a href="http://10.3.17.217/Authentification/login.php" class="btn btn-primary btn-lg mt-3">Se connecter</a>
+          <a href="http://10.3.17.217:8090/Authentification/login.php" class="btn btn-primary btn-lg mt-3">Se connecter</a>
       <?php } ?>
 
     </div>
@@ -93,7 +93,7 @@ $evenements = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 <p>
                   <a class="btn btn-lg btn-primary"
-                    href="http://10.3.17.217/Evenements/Evenements.php">
+                    href="http://10.3.17.217:8090/Evenements/Evenements.php">
                     Voir l’événement
                   </a>
                 </p>

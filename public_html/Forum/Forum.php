@@ -187,7 +187,7 @@ function getUsername(PDO $pdo, int $idU): string {
 
         </div>
 
-        <a href="http://10.3.17.217/Forum/ajouterQuestion.php" class="btn btn-primary btn-floating" id="btn-fixed">
+        <a href="http://10.3.17.217:8090/Forum/ajouterQuestion.php" class="btn btn-primary btn-floating" id="btn-fixed">
             Ajouter une question
         </a>
     </main>

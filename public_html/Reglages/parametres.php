@@ -1,5 +1,8 @@
 <?php
-session_start();
+
+if (!isset($_SESSION)){
+    session_start();
+}
 // Vérifiez bien ce chemin vers votre connexion
 require '../Connexion/laConnexion.php'; 
 
