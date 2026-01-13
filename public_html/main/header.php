@@ -1,4 +1,7 @@
-        <header>
+        <!-- TODO: Masquer les onglets uniquement pour les utilisateurs connectés --> 
+        <!-- TODO: Gerer le composer pour mongodb --> 
+
+       <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Offcanvas navbar">
                 <div class="container-fluid">
 

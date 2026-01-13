@@ -1,5 +1,17 @@
 <?php
 session_start();
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+require '../Connexion/laConnexion.php'; 
+require '../Connexion/noSQLConnexion.php';
+
+if (!isset($_SESSION['idU'])) {
+    header("Location: /Authentification/login.php");
+    exit();
+}
+
 ?>
 
 <!doctype html>
@@ -146,16 +158,6 @@ session_start();
 </head>
 
 <?php 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-require '../Connexion/laConnexion.php'; 
-require '../Connexion/noSQLConnexion.php';
-
-if (!isset($_SESSION['idU'])) {
-    header("Location: /Authentification/login.php");
-    exit();
-}
 
 $conversations = $mongoDB->conversations;
 $messages = $mongoDB->messages;

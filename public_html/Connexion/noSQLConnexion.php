@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 // Récupération des variables d'environnement définies dans le docker-compose ou le .env
 $user = getenv('MONGO_USER') ?: 'root';
